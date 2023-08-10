@@ -1,0 +1,69 @@
+[{
+        "Basic": {
+            "Name": "Basic",
+            "Price": "100 INR",
+            "Video_Quality": "Good",
+            "Resolution": "480p",
+            "Devices": "Phone",
+            "Active_Screen": "1"
+        },
+        "Standard": {
+            "Name": "Standard",
+            "Price": "200 INR",
+            "Video_Quality": "Good",
+            "Resolution": "720p",
+            "Devices": "Phone+Tablet",
+            "Active_Screen": "3"
+        },
+        "Premium": {
+            "Name": "Premium",
+            "Price": "500 INR",
+            "Video_Quality": "Better",
+            "Resolution": "1080p",
+            "Devices": "Phone+Tablet+Computer",
+            "Active_Screen": "5"
+        },
+        "Regular": {
+            "Name": "Regular",
+            "Price": "700 INR",
+            "Video_Quality": "Best",
+            "Resolution": "4K+HDR",
+            "Devices": "Phone+Tablet+TV",
+            "Active_Screen": "10"
+        }
+    },
+    {
+        "Basic": {
+            "Name": "Basic",
+            "Price": "1000 INR",
+            "Video_Quality": "Good",
+            "Resolution": "480p",
+            "Devices": "Phone",
+            "Active_Screen": "1"
+        },
+        "Standard": {
+            "Name": "Standard",
+            "Price": "2000 INR",
+            "Video_Quality": "Good",
+            "Resolution": "720p",
+            "Devices": "Phone+Tablet",
+            "Active_Screen": "3"
+        },
+        "Premium": {
+            "Name": "Premium",
+            "Price": "5000 INR",
+            "Video_Quality": "Better",
+            "Resolution": "1080p",
+            "Devices": "Phone+Tablet+Computer",
+            "Active_Screen": "5"
+        },
+        "Regular": {
+            "Name": "Regular",
+            "Price": "7000 INR",
+            "Video_Quality": "Best",
+            "Resolution": "4K+HDR",
+            "Devices": "Phone+Tablet+TV",
+            "Active_Screen": "10"
+        }
+    }
+]
