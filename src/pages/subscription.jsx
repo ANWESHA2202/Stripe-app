@@ -2,6 +2,7 @@ import {useState,useEffect} from 'react';
 
 import ShowSubscriptions from '../components/subscription/showSubscriptions';
 import StripeContainer from '../components/stripe/stripeContainer';
+
 const Subscription = () => {
   const [step,setStep]=useState(0);
 
@@ -29,15 +30,13 @@ const Subscription = () => {
     case 1:{
       return(
         <StripeContainer
-          nextStep={nextStep}
           prevStep={prevStep}
         />
       )
       
     }
-    case 2:{
-      
-    }
+    default:
+      break
   }
 }
 

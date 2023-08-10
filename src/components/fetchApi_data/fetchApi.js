@@ -4,11 +4,7 @@ const fetchApi = async(url, requestBody = "", auth = true, method = "POST") => {
             "Content-Type": "application/json",
         };
 
-        if (auth) {
-            headers["Authorization"] = `Bearer ${localStorage.getItem('token')}`;
-        }
-
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/${url}`, {
+        const response = await fetch(`http://localhost:4000/users/${url}`, {
             method: method,
             headers: headers,
             body: JSON.stringify(requestBody),

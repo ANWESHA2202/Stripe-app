@@ -1,14 +1,8 @@
 import { Button } from "@chakra-ui/react";
 import { useState,useEffect } from "react";
-const PaymentStatus = ({planDetails}) => {
+const PaymentStatus = ({planDetails,today,prevStep}) => {
   const [planStatus, setPlanStatus] = useState(true);
-  const [today,setToday]=useState('')
 
-  useEffect(()=>{
-    const currentDate = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    setToday(currentDate.toLocaleDateString('en-US', options));
-  },[])
   return (
     <div className="w-1/2 p-5 rounded-xl bg-blue-100">
       <div className="w-full flex justify-between items-center">
@@ -31,7 +25,7 @@ const PaymentStatus = ({planDetails}) => {
         <div className="text-sm text-gray-400">{planDetails.Devices}</div>
         <div className="mt-3 mb-5 text-2xl font-bold">₹ {planDetails.Price}</div>
         <div>
-            <button className="p-2 pr-4 pl-4 border-2 mb-10 text-blue-500 border-blue-400">Change Plan</button>
+            <button className="p-2 pr-4 pl-4 border-2 mb-10 text-blue-500 border-blue-400" onClick={()=>prevStep()}>Change Plan</button>
         </div>
         {planStatus?<div>
             Your Subscription has started on {today}!

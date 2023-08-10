@@ -2,13 +2,13 @@ export const LoginValidate = (values) => {
     const errors = {};
     const { name, value } = values;
     switch (name) {
-        case 'username':
+        case 'email':
             if (!value) {
-                errors.username = 'Username is required'
-            } else if (value.length < 3) {
-                errors.username = 'Username must be of length min 3'
+                errors.email = 'Email address is required';
+            } else if (!/\S+@\S+\.\S+/.test(value)) {
+                errors.email = 'Email address is invalid';
             } else {
-                errors.username = ''
+                errors.email = ''
             }
             break;
 
@@ -32,24 +32,40 @@ export const LoginValidate = (values) => {
 };
 
 export const SignupValidate = (values) => {
-    let errors = {};
+    const errors = {}
+    const { name, value } = values;
+    switch (name) {
+        case 'username':
+            if (!value) {
+                errors.username = 'Name is required';
+            } else if (value.length < 3) {
+                errors.username = 'Name must have 3 min characters';
+            } else {
+                errors.username = ''
+            }
+            break;
+        case 'email':
+            if (!value) {
+                errors.email = 'Email address is required';
+            } else if (!/\S+@\S+\.\S+/.test(value)) {
+                errors.email = 'Email address is invalid';
+            } else {
+                errors.email = ''
+            }
+            break;
 
-    if (!values.username) {
-        errors.username = 'Username is required'
-    } else if (values.username.length < 3) {
-        errors.username = 'Username must be of length min 4'
-    }
+        case 'password':
+            if (!value) {
+                errors.password = 'Password is required'
+            } else if (value.length < 6) {
+                errors.password = 'Password length must be of min 6'
+            } else {
+                errors.password = ''
+            }
+            break;
 
-    if (!values.email) {
-        errors.email = 'Email address is required';
-    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-        errors.email = 'Email address is invalid';
-    }
-
-    if (!values.password) {
-        errors.password = 'Password is required'
-    } else if (values.password.length < 6) {
-        errors.password = 'Password length must be of min 7'
+        default:
+            break;
     }
     return errors;
 }

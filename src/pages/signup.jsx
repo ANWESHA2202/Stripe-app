@@ -3,16 +3,17 @@ import {Link, useNavigate } from 'react-router-dom';
 import Loader from '../components/layout/loader';
 import useForm from '../components/formControllers/useForm';
 import fetchApi from "../components/fetchApi_data/fetchApi";
+import userLogo from '../assets/user.png'
 import mailLogo from '../assets/mail.png'
 import hidePasswordLogo from '../assets/visibility.png'
 import showPasswordLogo from '../assets/close-eye.png'
 import { Input,InputGroup,InputRightAddon, useToast ,Button} from '@chakra-ui/react'
-import { LoginValidate} from "../components/formControllers/validate";
-const Login = () => {
+import {SignupValidate} from "../components/formControllers/validate";
+const SignUp = () => {
     const [isLoaded,setIsLoaded]=useState(false);
     const toast=useToast();
     const navigate=useNavigate();
-    const {values,handleChange,handleSubmit,errors}=useForm(login,LoginValidate)
+    const {values,handleChange,handleSubmit,errors}=useForm(signup,SignupValidate)
     
     const [showPassword,setShowPassword]=useState(false);
 
@@ -21,13 +22,14 @@ const Login = () => {
         setIsLoaded(true)
     },[])
 
-    async function login(){
+    async function signup(){
         const requestBody={
+            username:values.username,
             email:values.email,
             password:values.password
         }
         try{
-            const res=await fetchApi('login',requestBody);
+            const res=await fetchApi('signup',requestBody);
             if(res.status===200){
                 localStorage.setItem('email',values.email)
                 toast({
@@ -49,7 +51,23 @@ const Login = () => {
     {isLoaded?
         <div className='w-full h-screen flex flex-col justify-center items-center'>
             <div className='w-1/2 flex flex-col space-y-5 pb-10 justify-center items-center shadow-2xl'>
-                <h1 className='text-xl m-4 p-4'>Log In to Proceed</h1>
+                <h1 className='text-xl m-4 p-4'>Sign Up to Proceed</h1>
+                <div className='w-3/4'>
+                    <InputGroup>
+                        <Input
+                            placeholder="Name" 
+                            variant='flushed'
+                            name='username'
+                            value={values.username || ''}
+                            onChange={handleChange}
+                            focusBorderColor={errors.username?`red.500`:`blue.500`}
+                        />
+                        <InputRightAddon>
+                            <img src={userLogo} width={20} height={20}/>
+                        </InputRightAddon>
+                    </InputGroup>
+                    {errors.username && <p style={{color:'red'}}>*{errors.username}</p>}
+                </div>
                 <div className='w-3/4'>
                     <InputGroup>
                         <Input
@@ -84,9 +102,9 @@ const Login = () => {
                     {errors.password && <p style={{color:'red'}}>*{errors.password}</p>}
                 </div>
                 <Button colorScheme='blue' variant='solid' onClick={handleSubmit}>
-                    Log In
+                    Sign Up
                 </Button>
-            <p>Don't Have an Account? <Link to='/signup' className='text-blue-700 underline'>Sign Up</Link>!</p>
+            <p>Already Have an Account? <Link to='/login' className='text-blue-700 underline'>Log In</Link>!</p>
 
             </div>
         </div>
@@ -95,4 +113,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignUp
