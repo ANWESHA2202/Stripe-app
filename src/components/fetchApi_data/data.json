@@ -1,7 +1,7 @@
 [{
         "Basic": {
             "Name": "Basic",
-            "Price": "100 INR",
+            "Price": "100 INR/Month",
             "Video_Quality": "Good",
             "Resolution": "480p",
             "Devices": "Phone",
@@ -9,7 +9,7 @@
         },
         "Standard": {
             "Name": "Standard",
-            "Price": "200 INR",
+            "Price": "200 INR/Month",
             "Video_Quality": "Good",
             "Resolution": "720p",
             "Devices": "Phone+Tablet",
@@ -17,7 +17,7 @@
         },
         "Premium": {
             "Name": "Premium",
-            "Price": "500 INR",
+            "Price": "500 INR/Month",
             "Video_Quality": "Better",
             "Resolution": "1080p",
             "Devices": "Phone+Tablet+Computer",
@@ -25,7 +25,7 @@
         },
         "Regular": {
             "Name": "Regular",
-            "Price": "700 INR",
+            "Price": "700 INR/Month",
             "Video_Quality": "Best",
             "Resolution": "4K+HDR",
             "Devices": "Phone+Tablet+TV",
@@ -35,7 +35,7 @@
     {
         "Basic": {
             "Name": "Basic",
-            "Price": "1000 INR",
+            "Price": "1000 INR/Year",
             "Video_Quality": "Good",
             "Resolution": "480p",
             "Devices": "Phone",
@@ -43,7 +43,7 @@
         },
         "Standard": {
             "Name": "Standard",
-            "Price": "2000 INR",
+            "Price": "2000 INR/Year",
             "Video_Quality": "Good",
             "Resolution": "720p",
             "Devices": "Phone+Tablet",
@@ -51,7 +51,7 @@
         },
         "Premium": {
             "Name": "Premium",
-            "Price": "5000 INR",
+            "Price": "5000 INR/Year",
             "Video_Quality": "Better",
             "Resolution": "1080p",
             "Devices": "Phone+Tablet+Computer",
@@ -59,7 +59,7 @@
         },
         "Regular": {
             "Name": "Regular",
-            "Price": "7000 INR",
+            "Price": "7000 INR/Year",
             "Video_Quality": "Best",
             "Resolution": "4K+HDR",
             "Devices": "Phone+Tablet+TV",

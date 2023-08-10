@@ -14,18 +14,24 @@ import {
     Button
   } from '@chakra-ui/react'
 
-const ShowSubscriptions = () => {
+const ShowSubscriptions = ({nextStep}) => {
   const [isYearly,setIsYearly]=useState(0);
   const [planName,setPlanName]=useState(data[0].Basic);
+
   const handlePlan=(plan)=>{
     setPlanName(data[isYearly][plan])
+  }
+
+  const handleNext=()=>{
+    localStorage.setItem('plan',JSON.stringify(planName));
+    nextStep();
   }
   return (
     <div className='flex flex-col space-y-10 justify-center items-center mt-10'>
       <h1 className='text-lg font-semibold'>Choose the Right Plan for You</h1>
       <TableContainer>
         <Table variant='simple' className='select-none'>
-          <TableCaption>Select the Perfect Plan For You</TableCaption>
+          {/* <TableCaption>Select the Perfect Plan For You</TableCaption> */}
           <Thead>
             <Tr>
                 <Th>
@@ -85,7 +91,7 @@ const ShowSubscriptions = () => {
         </Table>
       </TableContainer>
 
-      <Button className='p-4 bg-blue-800'colorScheme='blue.800' minWidth={200}>Next</Button>
+      <Button className='p-4 bg-blue-800'colorScheme='blue.800' minWidth={200} onClick={()=>handleNext()}>Next</Button>
     </div>
   )
 }
