@@ -6,7 +6,7 @@ import fetchApi from "../components/fetchApi_data/fetchApi";
 import mailLogo from '../assets/mail.png'
 import hidePasswordLogo from '../assets/visibility.png'
 import showPasswordLogo from '../assets/close-eye.png'
-import { Input,InputGroup,InputRightAddon, useToast ,Button} from '@chakra-ui/react'
+import { Input,InputGroup,Text,InputRightAddon, useToast ,Button} from '@chakra-ui/react'
 import { LoginValidate} from "../components/formControllers/validate";
 const Login = () => {
     const [isLoaded,setIsLoaded]=useState(false);
@@ -37,6 +37,13 @@ const Login = () => {
                     isClosable: true,
                 })
                 navigate('/');
+            }else{
+                toast({
+                    title: res.data.message,
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true,
+                })
             }
         }catch(err){
             console.log(err);
@@ -47,14 +54,16 @@ const Login = () => {
   return (
     <>
     {isLoaded?
-        <div className='w-full h-screen flex flex-col justify-center items-center'>
-            <div className='w-1/2 flex flex-col space-y-5 pb-10 justify-center items-center shadow-2xl'>
-                <h1 className='text-xl m-4 p-4'>Log In to Proceed</h1>
+        <div className='w-full h-screen flex flex-col justify-center bg-blue-800 items-center'>
+            <div className='w-1/3 flex flex-col space-y-5 pb-10 bg-white  justify-center items-center rounded-xl'>
+                <h1 className='text-xl m-4 p-4'>Log In to Your Account</h1>
                 <div className='w-3/4'>
+                <Text>Email</Text>
                     <InputGroup>
+                    
                         <Input
                             placeholder="Email" 
-                            variant='flushed'
+                           
                             name='email'
                             value={values.email || ''}
                             onChange={handleChange}
@@ -67,10 +76,11 @@ const Login = () => {
                     {errors.email && <p style={{color:'red'}}>*{errors.email}</p>}
                 </div>
                 <div className='w-3/4'>
+                    <Text>Password</Text>
                     <InputGroup>
                         <Input
                             placeholder="Password" 
-                            variant='flushed'
+                           
                             name='password'
                             value={values.password || ''}
                             onChange={handleChange}
@@ -83,7 +93,7 @@ const Login = () => {
                     </InputGroup>
                     {errors.password && <p style={{color:'red'}}>*{errors.password}</p>}
                 </div>
-                <Button colorScheme='blue' variant='solid' onClick={handleSubmit}>
+                <Button colorScheme='blue' variant='solid' className='w-3/4 bg-blue-800' onClick={handleSubmit}>
                     Log In
                 </Button>
             <p>Don't Have an Account? <Link to='/signup' className='text-blue-700 underline'>Sign Up</Link>!</p>

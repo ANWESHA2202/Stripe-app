@@ -7,7 +7,7 @@ import userLogo from '../assets/user.png'
 import mailLogo from '../assets/mail.png'
 import hidePasswordLogo from '../assets/visibility.png'
 import showPasswordLogo from '../assets/close-eye.png'
-import { Input,InputGroup,InputRightAddon, useToast ,Button} from '@chakra-ui/react'
+import { Text,Input,InputGroup,InputRightAddon, useToast ,Button} from '@chakra-ui/react'
 import {SignupValidate} from "../components/formControllers/validate";
 const SignUp = () => {
     const [isLoaded,setIsLoaded]=useState(false);
@@ -33,12 +33,19 @@ const SignUp = () => {
             if(res.status===200){
                 localStorage.setItem('email',values.email)
                 toast({
-                    title: 'User Successfully Logged In!',
+                    title: 'User Successfully Signed Up!',
                     status: 'success',
                     duration: 9000,
                     isClosable: true,
                 })
                 navigate('/');
+            }else{
+                toast({
+                    title: res.data.message,
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true,
+                })
             }
         }catch(err){
             console.log(err);
@@ -49,14 +56,15 @@ const SignUp = () => {
   return (
     <>
     {isLoaded?
-        <div className='w-full h-screen flex flex-col justify-center items-center'>
-            <div className='w-1/2 flex flex-col space-y-5 pb-10 justify-center items-center shadow-2xl'>
+        <div className='w-full h-screen flex flex-col justify-center items-center bg-blue-800'>
+            <div className='w-1/3 bg-white flex flex-col space-y-5 pb-10 justify-center items-center shadow-2xl'>
                 <h1 className='text-xl m-4 p-4'>Sign Up to Proceed</h1>
                 <div className='w-3/4'>
+                    <Text>Name</Text>
                     <InputGroup>
                         <Input
                             placeholder="Name" 
-                            variant='flushed'
+                           
                             name='username'
                             value={values.username || ''}
                             onChange={handleChange}
@@ -69,10 +77,11 @@ const SignUp = () => {
                     {errors.username && <p style={{color:'red'}}>*{errors.username}</p>}
                 </div>
                 <div className='w-3/4'>
+                    <Text>Email</Text>
                     <InputGroup>
                         <Input
                             placeholder="Email" 
-                            variant='flushed'
+                       
                             name='email'
                             value={values.email || ''}
                             onChange={handleChange}
@@ -85,10 +94,11 @@ const SignUp = () => {
                     {errors.email && <p style={{color:'red'}}>*{errors.email}</p>}
                 </div>
                 <div className='w-3/4'>
+                    <Text>Password</Text>
                     <InputGroup>
                         <Input
                             placeholder="Password" 
-                            variant='flushed'
+            
                             name='password'
                             value={values.password || ''}
                             onChange={handleChange}
@@ -101,7 +111,7 @@ const SignUp = () => {
                     </InputGroup>
                     {errors.password && <p style={{color:'red'}}>*{errors.password}</p>}
                 </div>
-                <Button colorScheme='blue' variant='solid' onClick={handleSubmit}>
+                <Button colorScheme='blue' className='w-1/3' variant='solid' onClick={handleSubmit}>
                     Sign Up
                 </Button>
             <p>Already Have an Account? <Link to='/login' className='text-blue-700 underline'>Log In</Link>!</p>

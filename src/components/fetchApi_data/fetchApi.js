@@ -16,7 +16,7 @@ const fetchApi = async(url, requestBody = "", auth = true, method = "POST") => {
         // console.log(error.message);
         const err = {
             errcode: 1,
-            message: error,
+            message: error.message,
         };
         return err;
     }
